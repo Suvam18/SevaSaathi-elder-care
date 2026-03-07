@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SevaSaathi - Profile & Settings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .profile-container {
+            max-width: 1200px;
+            margin: 100px auto 40px;
+            padding: 0 40px;
+        }
+        .profile-header-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .profile-btn-back {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #00bcd4;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .profile-btn-edit {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #00bcd4;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .profile-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+        }
+        .profile-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .profile-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 2px solid #eee;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fdfdfd;
+        }
+        .profile-avatar span {
+            font-size: 60px;
+            color: var(--primary-green);
+        }
+        .profile-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+        .profile-email {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+        .btn-share {
+            background: #00bcd4;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .profile-bio {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        .profile-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .stat-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #999;
+        }
+        .profile-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .profile-section-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .profile-section-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+        }
+        .info-row {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .info-item {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .info-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .info-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+        .info-value {
+            font-size: 15px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        .connected-apps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .app-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+        }
+        .app-icon {
+            font-size: 24px;
+            color: #00bcd4;
+        }
+        .app-info span {
+            display: block;
+            font-size: 12px;
+            color: #999;
+        }
+        .app-info strong {
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body style="background: #f8fbf9;">
+    
+    <!-- HEADER (using style from index) -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-group">
+                <a href="{{ url_for('index') }}" class="logo">
+                    <span class="material-icons-round logo-icon">volunteer_activism</span>
+                    <span>SevaSaathi</span>
+                </a>
+            </div>
+            <div class="nav-actions">
+                <span style="font-weight: 500; font-size: 15px; color: var(--text-primary); margin-right: 12px;">Hi, {{ user_name }}</span>
+                <a href="{{ url_for('logout') }}" class="btn btn-login" style="background-color: var(--accent-red); color: white; text-decoration: none;">Log out</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="profile-container">
+        <div class="profile-header-actions">
+            <a href="{{ url_for('dashboard') }}" class="profile-btn-back">
+                <span class="material-icons-round">grid_view</span>
+                Back to Dashboard
+            </a>
+            <a href="#" class="profile-btn-edit">
+                <span class="material-icons-round">edit</span>
+                Edit Profile
+            </a>
+        </div>
+
+        <h1 class="profile-title">Profile & Settings</h1>
+
+        <div class="profile-grid">
+            <!-- Sidebar -->
+            <div class="profile-sidebar">
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <span class="material-icons-round">face</span>
+                    </div>
+                    <h2 class="profile-name">{{ user_name }}</h2>
+                    <p class="profile-email">{{ email }}</p>
+                    
+                    <button class="btn-share">
+                        <span class="material-icons-round">share</span>
+                        Share Health Profile
+                    </button>
+                    
+                    <p class="profile-bio">SevaSaathi User | Family Caregiver</p>
+                    
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">32</span>
+                            <span class="stat-label">Logs</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">14</span>
+                            <span class="stat-label">Reports</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">5</span>
+                            <span class="stat-label">SOS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section-card" style="margin-top: 30px;">
+                    <h4>Contact Information</h4>
+                    <div class="info-row">
+                        <div class="info-item">
+                            <div class="info-label">Email Address</div>
+                            <div class="info-value">{{ email }}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Emergency Phone</div>
+                            <div class="info-value">+91 98765 43210</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="profile-sections">
+                <div class="profile-section-card">
+                    <h4>Personal Information</h4>
+                    <div class="info-row">
+                        <div class="info-item">
+                            <div class="info-label">Full Name</div>
+                            <div class="info-value">{{ user_name }}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Email Address</div>
+                            <div class="info-value">{{ email }}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Member Since</div>
+                            <div class="info-value">March 08, 2026</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section-card">
+                    <h4>Health Connections</h4>
+                    <div class="connected-apps">
+                        <div class="app-item">
+                            <div class="app-icon"><span class="material-icons-round">health_and_safety</span></div>
+                            <div class="app-info">
+                                <span>Google Fit</span>
+                                <strong>Connected</strong>
+                            </div>
+                        </div>
+                        <div class="app-item">
+                            <div class="app-icon"><span class="material-icons-round">local_hospital</span></div>
+                            <div class="app-info">
+                                <span>Primary Doctor</span>
+                                <strong>Dr. Rahul Sinha</strong>
+                            </div>
+                        </div>
+                        <div class="app-item">
+                            <div class="app-icon"><span class="material-icons-round">watch</span></div>
+                            <div class="app-info">
+                                <span>Smart Watch</span>
+                                <strong>Not connected</strong>
+                            </div>
+                        </div>
+                        <div class="app-item">
+                            <div class="app-icon"><span class="material-icons-round">groups</span></div>
+                            <div class="app-info">
+                                <span>Care Circle</span>
+                                <strong>3 Members</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section-card">
+                    <h4>Preferences</h4>
+                    <div class="connected-apps">
+                        <div class="app-item">
+                            <div class="app-icon"><span class="material-icons-round">dark_mode</span></div>
+                            <div class="app-info">
+                                <span>Appearance</span>
+                                <strong>Light Mode</strong>
+                            </div>
+                        </div>
+                        <div class="app-item">
+                            <div class="app-icon"><span class="material-icons-round">notifications_active</span></div>
+                            <div class="app-info">
+                                <span>SOS Alerts</span>
+                                <strong>Enabled</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

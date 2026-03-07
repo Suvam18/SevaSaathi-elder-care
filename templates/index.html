@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
     <!-- External CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v={{ range(1, 1000) | random }}">
 </head>
 <body>
 
@@ -22,7 +22,7 @@
                     <span class="material-icons-round">menu</span>
                 </button>
                 <a href="#" class="logo">
-                    <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/leaf.svg" alt="Leaf logo" class="logo-icon-svg" />
+                    <span class="material-icons-round logo-icon">volunteer_activism</span>
                     <span>SevaSaathi</span>
                 </a>
             </div>
@@ -30,8 +30,9 @@
             <nav>
                 <ul class="nav-menu">
                     <li><a href="#features">Features</a></li>
-                    <li><a href="#how-it-works">How it works</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
+                     <li><a href="#how-it-works">How it works</a></li>
+                    <li><a href="#why-sevasaathi">Why SevaSaathi ?</a></li>
+                     <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#faq">FAQ</a></li>
                 </ul>
             </nav>
@@ -48,9 +49,9 @@
                 <button class="icon-toggle" aria-label="Toggle Dark Mode">
                     <span class="material-icons-round">dark_mode</span>
                 </button>
-                <button class="icon-toggle" aria-label="Profile">
-                    <span class="material-icons-round">account_circle</span>
-                </button>
+                <a href="{{ url_for('profile') }}" class="icon-toggle" aria-label="Profile">
+                    <span class="material-icons-round">face</span>
+                </a>
             </div>
         </div>
     </header>
@@ -67,8 +68,13 @@
                     </p>
 
                     <div class="hero-actions">
-                        <button class="btn btn-primary">Get started</button>
-                        <button class="btn btn-outline">See demo</button>
+                        {% if user_name %}
+                            <a href="{{ url_for('profile') }}" class="btn btn-primary" style="text-decoration:none;">Go to Profile</a>
+                            <a href="#features" class="btn btn-outline" style="text-decoration:none;">Explore Features</a>
+                        {% else %}
+                            <a href="{{ url_for('signup') }}" class="btn btn-primary" style="text-decoration:none;">Get started</a>
+                            <a href="{{ url_for('login') }}" class="btn btn-outline" style="text-decoration:none;">Log in (See demo)</a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="hero-visual">
@@ -168,6 +174,30 @@
                     <h3>Key Features</h3>
                     <p>The app lets family members link a <span class="feat-link">Caregiver Dashboard</span> to monitor their loved one's health journey. Users can also trigger a 1-tap SOS button that <span class="feat-link">instantly alerts contacts</span> with GPS location during emergencies — a true lifeline.</p>
                 </div>
+
+                <div class="feature-card fade-in-up" style="animation-delay: 0.5s;">
+                    <div class="feature-icon-outline">
+                        <span class="material-icons-round">volunteer_activism</span>
+                    </div>
+                    <h3>Family Sharing</h3>
+                    <p>Easily <span class="feat-link">share health updates</span> and vital logs securely with trusted family members and doctors, ensuring everyone is kept in the loop.</p>
+                </div>
+
+                <div class="feature-card fade-in-up" style="animation-delay: 0.6s;">
+                    <div class="feature-icon-outline">
+                        <span class="material-icons-round">verified_user</span>
+                    </div>
+                    <h3>Data Privacy</h3>
+                    <p>Your health data is <span class="feat-link">fully encrypted</span> and securely stored. You have complete control over who can view and access your medical history.</p>
+                </div>
+
+                <div class="feature-card fade-in-up" style="animation-delay: 0.7s;">
+                    <div class="feature-icon-outline">
+                        <span class="material-icons-round">notifications_active</span>
+                    </div>
+                    <h3>Smart Alerts</h3>
+                    <p>Receive proactive <span class="feat-link">push notifications</span> for upcoming appointments, refill reminders, and missed medication doses directly on your device.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -210,17 +240,17 @@
 
             <!-- Step Content Row -->
             <div class="steps-content-grid">
-                <div class="step-content-item">
+                <div class="step-content-item slide-in-left">
                     <h3>Download &amp; Connect</h3>
                     <p>Install the app and invite a <span class="feat-link">trusted family member</span> or primary caregiver to link to your account with a simple share code.</p>
                 </div>
 
-                <div class="step-content-item">
+                <div class="step-content-item slide-in-bottom">
                     <h3>Set Your Routines</h3>
                     <p>Quickly add your <span class="feat-link">daily medications</span>, upload prescriptions, and log upcoming doctor appointments in just a few taps.</p>
                 </div>
 
-                <div class="step-content-item">
+                <div class="step-content-item slide-in-right">
                     <h3>Stay Protected 24/7</h3>
                     <p>Relax knowing <span class="feat-link">smart reminders</span> keep you on track, and a 1-tap SOS button <span class="feat-link">instantly alerts</span> your contacts whenever you need help.</p>
                 </div>
@@ -228,6 +258,91 @@
         </div>
     </section>
 
+    <!-- WHY SEVASAATHI -->
+    <section class="why-sevasaathi" id="why-sevasaathi">
+        <div class="features-container">
+            <div class="why-divider">
+                <span>Why SevaSaathi?</span>
+            </div>
+            
+            <div class="why-header" style="text-align:center;">
+                <h2 style="text-align:center;">Our Services</h2>
+                <p style="text-align:center;">SevaSaathi offers a range of services to make managing your health journey easy and secure:</p>
+            </div>
+            
+            <div class="why-grid why-grid-6">
+                <!-- Card 1 -->
+                <div class="why-card fade-in-up">
+                    <div class="why-image">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80" alt="Health Logging" />
+                    </div>
+                    <div class="why-content">
+                        <h3>Health Logging</h3>
+                        <p>Record each step of your health journey with detailed vitals and symptom entries.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="why-card fade-in-up" style="animation-delay: 0.1s">
+                    <div class="why-image">
+                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&q=80" alt="Care Sharing" />
+                    </div>
+                    <div class="why-content">
+                        <h3>Care Sharing</h3>
+                        <p>Share your health records with family and your doctor instantly with SevaSaathi.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="why-card fade-in-up" style="animation-delay: 0.2s">
+                    <div class="why-image">
+                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=800&q=80" alt="Care Collaboration" />
+                    </div>
+                    <div class="why-content">
+                        <h3>Care Collaboration</h3>
+                        <p>Collaborate on health plans with medical professionals for better and proactive care.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="why-card fade-in-up" style="animation-delay: 0.3s">
+                    <div class="why-image">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&q=80" alt="Medication Reminders" />
+                    </div>
+                    <div class="why-content">
+                        <h3>Medication Reminders</h3>
+                        <p>Never miss a dose with smart, timely notifications for every medication in your daily schedule.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="why-card fade-in-up" style="animation-delay: 0.4s">
+                    <div class="why-image">
+                        <img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=800&q=80" alt="Emergency SOS" />
+                    </div>
+                    <div class="why-content">
+                        <h3>Emergency SOS</h3>
+                        <p>One tap sends your location and an alert to all emergency contacts instantly during any crisis.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="why-card fade-in-up" style="animation-delay: 0.5s">
+                    <div class="why-image">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="Appointment Tracking" />
+                    </div>
+                    <div class="why-content">
+                        <h3>Appointment Tracking</h3>
+                        <p>Manage upcoming doctor visits, lab tests, and health check-ups all in one organised calendar view.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="why-divider bottom-divider">
+                <span>See Our Community in Action</span>
+            </div>
+        </div>
+    </section>
 
     <!-- PRICING -->
     <section class="pricing" id="pricing">
@@ -239,7 +354,7 @@
 
             <div class="pricing-grid">
                 <!-- Basic Plan -->
-                <div class="pricing-card">
+                <div class="pricing-card slide-in-left">
                     <h3>Basic</h3>
                     <div class="price">Free<span>/forever</span></div>
                     <p class="pricing-desc">Essential tools for independent seniors.</p>
@@ -254,7 +369,7 @@
                 </div>
 
                 <!-- Premium Plan -->
-                <div class="pricing-card premium-card">
+                <div class="pricing-card premium-card slide-in-right">
                     <div class="popular-badge">Most Popular</div>
                     <h3>Family Premium</h3>
                     <div class="price">₹499<span>/month</span></div>
@@ -279,25 +394,59 @@
             </div>
 
             <div class="faq-grid">
-                <div class="faq-item">
+                <div class="faq-item slide-in-top-left">
                     <h4>Is SevaSaathi easy for seniors to use?</h4>
                     <p>Yes! We designed the app specifically for older adults with large fonts, high contrast colors, and simplified menus to reduce confusion.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="faq-item slide-in-top-right">
                     <h4>Can family members access the health data?</h4>
                     <p>Absolutely. With our Premium plan, you can link a Caregiver Dashboard where family members can monitor vitals and receive alerts.</p>
                 </div>
 
-                <div class="faq-item">
+                <div class="faq-item slide-in-bottom-left">
                     <h4>How does the SOS button work?</h4>
                     <p>Pressing the SOS button instantly sends an automated phone call, SMS, and app notification with GPS coordinates to all registered emergency contacts.</p>
                 </div>
 
-                <div class="faq-item">
+                <div class="faq-item slide-in-bottom-right">
                     <h4>Do I need special hardware?</h4>
                     <p>No, SevaSaathi works entirely on your existing smartphone. No extra pendants or base stations are required.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section" id="stats">
+        <div class="features-container">
+            <div class="stats-header">
+                <h2>Numbers tell our story</h2>
+                <p>A snapshot of the seniors we help stay safe, connected, and healthy every single day.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item fade-in-up">
+                    <div class="stat-number" data-target="10000">0</div>
+                    <div class="stat-label">Seniors Supported</div>
+                    <div class="stat-desc">Staying safe and healthy with SevaSaathi</div>
+                </div>
+
+                <div class="stat-item fade-in-up" style="animation-delay:0.15s;">
+                    <div class="stat-number" data-target="50000">0</div>
+                    <div class="stat-label">Medications Tracked</div>
+                    <div class="stat-desc">Doses logged and reminders sent on time</div>
+                </div>
+
+                <div class="stat-item fade-in-up" style="animation-delay:0.3s;">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">SOS Alerts Triggered</div>
+                    <div class="stat-desc">Emergency responses saved lives in critical moments</div>
+                </div>
+            </div>
+
+            <div class="why-divider" style="margin-top:80px;">
+                <span>Ready to Simplify Senior Healthcare?</span>
             </div>
         </div>
     </section>
@@ -316,7 +465,7 @@
             <!-- Column 1: Brand -->
             <div class="footer-col footer-brand">
                 <a href="#" class="footer-logo">
-                    <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/leaf.svg" alt="SevaSaathi logo" class="footer-logo-icon" />
+                    <span class="material-icons-round footer-logo-icon">volunteer_activism</span>
                     <span>SevaSaathi</span>
                 </a>
                 <p>SevaSaathi was built to bring peace of mind to seniors and their families. A thoughtful health companion designed with love, simplicity, and safety in mind.</p>
@@ -342,8 +491,9 @@
                 <ul>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#how-it-works">How it works</a></li>
-                    <li><a href="#faq">FAQ</a></li>
+                     <li><a href="#how-it-works">How it works</a></li>
+                    <li><a href="#why-sevasaathi">Why SevaSaathi ?</a></li>
+                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
                 </ul>
@@ -364,6 +514,205 @@
             <p>© Copyright 2025, All Rights Reserved by SevaSaathi</p>
         </div>
     </footer>
+
+    <!-- SIDEBAR MENU -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebarMenu">
+        <div class="sidebar-header">
+            <a href="#" class="logo">
+                <span class="material-icons-round logo-icon">volunteer_activism</span>
+                <span>SevaSaathi</span>
+            </a>
+            <button class="close-sidebar-btn" id="closeSidebarBtn">
+                <span class="material-icons-round">close</span>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="{{ url_for('index') }}">
+                        <span class="material-icons-round">home</span>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('profile') }}">
+                        <span class="material-icons-round">person</span>
+                        Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#emergency" class="text-danger">
+                        <span class="material-icons-round">medical_services</span>
+                        Emergency SOS
+                    </a>
+                </li>
+                <li>
+                    <a href="#records">
+                        <span class="material-icons-round">folder_shared</span>
+                        Health Records
+                    </a>
+                </li>
+                <li>
+                    <a href="#notifications">
+                        <span class="material-icons-round">notifications</span>
+                        Notifications
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p class="sidebar-greeting">Thank you for visiting</p>
+            {% if user_name %}
+                <a href="{{ url_for('logout') }}" class="btn sidebar-logout-btn">
+                    <span class="material-icons-round" style="font-size: 18px;">logout</span>
+                    Logout
+                </a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn sidebar-logout-btn" style="background-color: var(--primary-green);">
+                    <span class="material-icons-round" style="font-size: 18px;">login</span>
+                    Log in
+                </a>
+            {% endif %}
+            <p class="sidebar-version">v1.0.0</p>
+        </div>
+    </aside>
+
+    <!-- FEATURE MODAL (Tabs) -->
+    <div class="feature-modal-overlay" id="featureModalOverlay"></div>
+    <div class="feature-modal" id="featureModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>SevaSaathi Services</h2>
+                <button class="close-modal-btn" id="closeModalBtn">
+                    <span class="material-icons-round">close</span>
+                </button>
+            </div>
+            
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-tab="emergency">
+                    <span class="material-icons-round text-danger">medical_services</span>
+                    Emergency SOS
+                </button>
+                <button class="tab-btn" data-tab="records">
+                    <span class="material-icons-round">folder_shared</span>
+                    Health Records
+                </button>
+                <button class="tab-btn" data-tab="notifications">
+                    <span class="material-icons-round">notifications</span>
+                    Notifications
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Emergency SOS Tab Pane -->
+                <div class="tab-pane active" id="tab-emergency">
+                    <div class="sos-container">
+                        <div class="sos-pulse-ring"></div>
+                        <button class="btn-sos-large">
+                            <span class="material-icons-round">sos</span>
+                            SEND ALERT ALARM
+                        </button>
+                        <p class="sos-help-text">Press and hold for 3 seconds to alert your primary contacts and nearby caregivers.</p>
+                        
+                        <div class="emergency-contacts">
+                            <h3>Primary Contacts</h3>
+                            <div class="contact-card">
+                                <span class="material-icons-round">person</span>
+                                <div class="contact-info">
+                                    <span class="contact-name">Rahul Sharma (Son)</span>
+                                    <span class="contact-phone">+91 98765 43210</span>
+                                </div>
+                                <button class="btn-call"><span class="material-icons-round">call</span></button>
+                            </div>
+                            <div class="contact-card">
+                                <span class="material-icons-round">local_hospital</span>
+                                <div class="contact-info">
+                                    <span class="contact-name">City Hospital</span>
+                                    <span class="contact-phone">102</span>
+                                </div>
+                                <button class="btn-call"><span class="material-icons-round">call</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health Records Tab Pane -->
+                <div class="tab-pane" id="tab-records">
+                    <div class="records-header">
+                        <h3>Recent Documents</h3>
+                        <button class="btn btn-outline" style="padding: 6px 12px; font-size: 13px;">Upload New</button>
+                    </div>
+                    <div class="records-list">
+                        <div class="record-item">
+                            <div class="record-icon"><span class="material-icons-round">science</span></div>
+                            <div class="record-details">
+                                <h4>Complete Blood Count (CBC)</h4>
+                                <span>Nov 05, 2023 • Dr. Gupta</span>
+                            </div>
+                            <div class="record-actions">
+                                <button title="View"><span class="material-icons-round">visibility</span></button>
+                                <button title="Download"><span class="material-icons-round">download</span></button>
+                            </div>
+                        </div>
+                        <div class="record-item">
+                            <div class="record-icon"><span class="material-icons-round">receipt_long</span></div>
+                            <div class="record-details">
+                                <h4>Cardiology Prescription</h4>
+                                <span>Oct 28, 2023 • City Hospital</span>
+                            </div>
+                            <div class="record-actions">
+                                <button title="View"><span class="material-icons-round">visibility</span></button>
+                                <button title="Download"><span class="material-icons-round">download</span></button>
+                            </div>
+                        </div>
+                        <div class="record-item">
+                            <div class="record-icon"><span class="material-icons-round">monitor_heart</span></div>
+                            <div class="record-details">
+                                <h4>ECG Report</h4>
+                                <span>Oct 28, 2023 • City Hospital</span>
+                            </div>
+                            <div class="record-actions">
+                                <button title="View"><span class="material-icons-round">visibility</span></button>
+                                <button title="Download"><span class="material-icons-round">download</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications Tab Pane -->
+                <div class="tab-pane" id="tab-notifications">
+                    <div class="notifications-list">
+                        <div class="notification-item unread">
+                            <div class="noti-icon medicine"><span class="material-icons-round">medication</span></div>
+                            <div class="noti-content">
+                                <h4>Medication Due</h4>
+                                <p>It is time to take your Atorvastatin (10mg) after dinner.</p>
+                                <span class="noti-time">Just now</span>
+                            </div>
+                        </div>
+                        <div class="notification-item unread">
+                            <div class="noti-icon appointment"><span class="material-icons-round">calendar_today</span></div>
+                            <div class="noti-content">
+                                <h4>Upcoming Appointment</h4>
+                                <p>You have a Cardiology checkup with Dr. Gupta tomorrow at 10:30 AM.</p>
+                                <span class="noti-time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="noti-icon system"><span class="material-icons-round">info</span></div>
+                            <div class="noti-content">
+                                <h4>Health Record Added</h4>
+                                <p>Dr. Gupta added a new CBC report to your profile.</p>
+                                <span class="noti-time">Yesterday</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- External JS -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>

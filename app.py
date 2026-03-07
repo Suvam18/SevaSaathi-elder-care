@@ -59,10 +59,19 @@ def dashboard():
     user_name = users_db[session['user_email']]['name']
     return render_template('dashboard.html', email=session['user_email'], user_name=user_name)
 
+@app.route('/profile')
+def profile():
+    if 'user_email' not in session:
+        flash('Please login to access your profile.', 'error')
+        return redirect(url_for('login'))
+        
+    user_name = users_db[session['user_email']]['name']
+    return render_template('profile.html', email=session['user_email'], user_name=user_name)
+
 @app.route('/logout')
 def logout():
     session.pop('user_email', None)
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000)
