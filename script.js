@@ -33,3 +33,28 @@ mobileBtn.addEventListener("click", () => {
     navMenu.style.flexDirection = "column";
   }
 });
+// Dark Mode Toggle
+const darkModeBtn = document.querySelector('.icon-toggle[aria-label="Toggle Dark Mode"]');
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+// Setup based on local storage or system preference
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme === "dark" || (!currentTheme && prefersDarkScheme.matches)) {
+    document.documentElement.setAttribute("data-theme", "dark");
+    darkModeBtn.querySelector('.material-icons-round').textContent = 'light_mode';
+}
+
+darkModeBtn.addEventListener('click', () => {
+    let theme = document.documentElement.getAttribute("data-theme");
+    let icon = darkModeBtn.querySelector('.material-icons-round');
+    
+    if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+        icon.textContent = 'dark_mode';
+    } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        icon.textContent = 'light_mode';
+    }
+});

@@ -17,25 +17,34 @@
     <!-- HEADER -->
     <header class="header">
         <div class="header-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">SS</div>
-                <span>SevaSaathi</span>
-            </a>
+            <div class="logo-group">
+                <button class="mobile-menu-btn">
+                    <span class="material-icons-round">menu</span>
+                </button>
+                <a href="#" class="logo">
+                    <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/leaf.svg" alt="Leaf logo" class="logo-icon-svg" />
+                    <span>SevaSaathi</span>
+                </a>
+            </div>
 
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#" class="active">Home</a></li>
                     <li><a href="#features">Features</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#how-it-works">How it works</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                 </ul>
             </nav>
 
             <div class="nav-actions">
-                <button class="btn btn-text">Log in</button>
-                <button class="btn btn-primary">Sign up</button>
-                <button class="mobile-menu-btn">
-                    <span class="material-icons-round">menu</span>
+                <button class="btn btn-login">Log in</button>
+                <button class="btn btn-outline btn-signin">Sign in</button>
+                <div class="divider"></div>
+                <button class="icon-toggle" aria-label="Toggle Dark Mode">
+                    <span class="material-icons-round">dark_mode</span>
+                </button>
+                <button class="icon-toggle" aria-label="Profile">
+                    <span class="material-icons-round">account_circle</span>
                 </button>
             </div>
         </div>
@@ -45,21 +54,77 @@
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="material-icons-round">verified</span>
-                    Trusted by 50,000+ seniors
+                <div class="hero-text">
+                    <h1>Medication &<br/>appointments—made<br/>simple for seniors</h1>
+
+                    <p class="hero-subtitle">
+                        Manage healthcare routines, track vitals, and stay connected with ease. Designed for peace of mind.
+                    </p>
+
+                    <div class="hero-actions">
+                        <button class="btn btn-primary">Get started</button>
+                        <button class="btn btn-outline">See demo</button>
+                    </div>
                 </div>
+                <div class="hero-visual">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="app-header">
+                                <p class="app-date">Today</p>
+                                <span class="material-icons-round bell-icon">notifications</span>
+                            </div>
+                            <h2 class="app-greeting">Good morning, Sharma Ji!</h2>
+                            <p class="app-sub-date">Today, Nov 10, 2023</p>
+                            
+                            <div class="floating-reminder active-reminder">
+                                <div class="reminder-header">Medication Reminder</div>
+                                <div class="reminder-body">
+                                    <div class="reminder-icon medicine-icon"><span class="material-icons-round">medication</span></div>
+                                    <div class="reminder-details">
+                                        <div class="reminder-title">Atorvastatin - 10mg</div>
+                                        <div class="reminder-time">8:00 AM <span class="due-now">(Due now)</span></div>
+                                    </div>
+                                    <button class="btn-take">Take</button>
+                                </div>
+                            </div>
+                            
+                            <div class="floating-reminder">
+                                <div class="reminder-body">
+                                    <div class="reminder-icon"><span class="material-icons-round" style="color:#666; font-size:16px;">medication</span></div>
+                                    <div class="reminder-details">
+                                        <div class="reminder-title" style="font-size:12px;">Metformin - 500mg</div>
+                                        <div class="reminder-time" style="color:#999;">1:00 PM</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                             <div class="upcoming-appointments">
+                                <div class="apt-header">Upcoming Appointments</div>
+                                <div class="calendar-week">
+                                    <div class="day"><span>Sun</span><span>8</span></div>
+                                    <div class="day"><span>Mon</span><span>9</span></div>
+                                    <div class="day active"><span>Tue</span><span>10</span></div>
+                                    <div class="day"><span>Wed</span><span>11</span></div>
+                                    <div class="day"><span>Thu</span><span>12</span></div>
+                                    <div class="day"><span>Fri</span><span>13</span></div>
+                                    <div class="day"><span>Sat</span><span>14</span></div>
+                                </div>
+                                
+                                <div class="apt-card">
+                                   <div class="apt-icon"><span class="material-icons-round">person</span></div>
+                                   <div class="apt-details">
+                                       <div class="apt-title">Dr. Gupta (Cardiologist) - 10:30 AM</div>
+                                   </div>
+                                </div>
+                            </div>
 
-                <h1>Your Health Companion for Golden Years</h1>
-
-                <p class="hero-subtitle">
-                    AI-powered health monitoring, medication reminders,
-                    and emergency support - all in one simple app designed for seniors.
-                </p>
-
-                <div class="hero-actions">
-                    <button class="btn btn-primary">Download for iOS</button>
-                    <button class="btn btn-outline">Download for Android</button>
+                            <button class="sos-button">
+                                <span class="material-icons-round">call</span>
+                                SOS Emergency
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -75,122 +140,148 @@
 
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <span class="material-icons-round">medication</span>
+                    <div class="feature-icon feature-icon-medicine">
+                         <span class="material-icons-round">medication</span>
+                         <span class="material-icons-round heart-icon">favorite_border</span>
                     </div>
-                    <h3>Smart Medication Reminders</h3>
-                    <p>Never miss a dose with intelligent reminders.</p>
+                    <h3>Medication reminders + health logs</h3>
+                    <p>Never miss a dose. Track vital signs and health progress over time.</p>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <span class="material-icons-round">emergency</span>
+                        <span class="material-icons-round">calendar_month</span>
+                        <div class="check-badge"><span class="material-icons-round" style="font-size:10px;">check</span></div>
                     </div>
-                    <h3>Emergency SOS</h3>
-                    <p>One-tap emergency alerts to caregivers.</p>
+                    <h3>Appointment scheduling + calendar view</h3>
+                    <p>Easy booking and clear view of all upcoming medical appointments.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <span class="material-icons-round">phone_iphone</span>
+                        <div class="phone-badge"><span class="material-icons-round" style="font-size:10px;">medical_services</span></div>
+                    </div>
+                    <h3>Emergency contact / SOS</h3>
+                    <p>One-touch alerts to family and emergency services when needed.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <span class="material-icons-round">web</span>
+                        <div class="web-badge"><span class="material-icons-round" style="font-size:10px;">favorite</span></div>
+                    </div>
+                    <h3>Family/caregiver dashboard (optional)</h3>
+                    <p>Keep loved ones informed and involved in the care journey.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <p>© 2024 SevaSaathi. All rights reserved.</p>
-    </footer>
-
-    <!-- External JS -->
-    <script src="script.js"></script>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SevaSaathi - Your Health Companion</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-
-    <!-- External CSS -->
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <!-- HEADER -->
-    <header class="header">
-        <div class="header-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">SS</div>
-                <span>SevaSaathi</span>
-            </a>
-
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#testimonials">Reviews</a></li>
-                </ul>
-            </nav>
-
-            <div class="nav-actions">
-                <button class="btn btn-text">Log in</button>
-                <button class="btn btn-primary">Sign up</button>
-                <button class="mobile-menu-btn">
-                    <span class="material-icons-round">menu</span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="material-icons-round">verified</span>
-                    Trusted by 50,000+ seniors
-                </div>
-
-                <h1>Your Health Companion for Golden Years</h1>
-
-                <p class="hero-subtitle">
-                    AI-powered health monitoring, medication reminders,
-                    and emergency support - all in one simple app designed for seniors.
-                </p>
-
-                <div class="hero-actions">
-                    <button class="btn btn-primary">Download for iOS</button>
-                    <button class="btn btn-outline">Download for Android</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FEATURES -->
-    <section class="features" id="features">
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how-it-works">
         <div class="features-container">
             <div class="section-header">
-                <h2>Everything You Need for Better Health</h2>
-                <p>Comprehensive features designed specifically for senior healthcare needs</p>
+                <h2>How SevaSaathi Protects You</h2>
+                <p>Three simple steps to peace of mind for you and your family.</p>
             </div>
 
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <span class="material-icons-round">medication</span>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Download & Connect</h3>
+                        <p>Install the app and invite a trusted family member or primary caregiver to link to your account.</p>
                     </div>
-                    <h3>Smart Medication Reminders</h3>
-                    <p>Never miss a dose with intelligent reminders.</p>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <span class="material-icons-round">emergency</span>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Set Your Routines</h3>
+                        <p>Quickly add your daily medications, upload prescriptions, and log upcoming doctor appointments.</p>
                     </div>
-                    <h3>Emergency SOS</h3>
-                    <p>One-tap emergency alerts to caregivers.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Stay Protected 24/7</h3>
+                        <p>Relax knowing smart reminders will keep you on track, and a 1-tap SOS button is always ready.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Choose the plan that best fits your family's caregiving needs.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">Free<span>/forever</span></div>
+                    <p class="pricing-desc">Essential tools for independent seniors.</p>
+                    <ul class="pricing-features">
+                        <li><span class="material-icons-round check">check_circle</span> Daily medication reminders</li>
+                        <li><span class="material-icons-round check">check_circle</span> Basic health & vitals logging</li>
+                        <li><span class="material-icons-round check">check_circle</span> 1 Emergency SOS contact</li>
+                        <li class="disabled"><span class="material-icons-round">remove_circle_outline</span> Caregiver dashboard access</li>
+                        <li class="disabled"><span class="material-icons-round">remove_circle_outline</span> Appointment calendar sync</li>
+                    </ul>
+                    <button class="btn btn-outline btn-full">Get Started</button>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="pricing-card premium-card">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Family Premium</h3>
+                    <div class="price">₹499<span>/month</span></div>
+                    <p class="pricing-desc">Complete peace of mind for the whole family.</p>
+                    <ul class="pricing-features">
+                        <li><span class="material-icons-round check">check_circle</span> <strong>Everything in Basic, plus:</strong></li>
+                        <li><span class="material-icons-round check">check_circle</span> Shared caregiver dashboard</li>
+                        <li><span class="material-icons-round check">check_circle</span> Unlimited SOS contacts & priority routing</li>
+                        <li><span class="material-icons-round check">check_circle</span> Automated doctor appointment sync</li>
+                        <li><span class="material-icons-round check">check_circle</span> PDF Health report exports</li>
+                    </ul>
+                    <button class="btn btn-primary btn-full">Upgrade to Premium</button>
+                </div>
+            </div>
+        </div>
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about using SevaSaathi for your loved ones.</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Is SevaSaathi easy for seniors to use?</h4>
+                    <p>Yes! We designed the app specifically for older adults with large fonts, high contrast colors, and simplified menus to reduce confusion.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>Can family members access the health data?</h4>
+                    <p>Absolutely. With our Premium plan, you can link a Caregiver Dashboard where family members can monitor vitals and receive alerts.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How does the SOS button work?</h4>
+                    <p>Pressing the SOS button instantly sends an automated phone call, SMS, and app notification with GPS coordinates to all registered emergency contacts.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Do I need special hardware?</h4>
+                    <p>No, SevaSaathi works entirely on your existing smartphone. No extra pendants or base stations are required.</p>
                 </div>
             </div>
         </div>
@@ -205,5 +296,4 @@
     <script src="script.js"></script>
 
 </body>
-</html>
 </html>
