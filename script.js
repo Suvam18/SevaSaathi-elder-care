@@ -58,3 +58,18 @@ darkModeBtn.addEventListener('click', () => {
         icon.textContent = 'light_mode';
     }
 });
+// Scroll-triggered fade-in animation for feature cards
+const fadeCards = document.querySelectorAll('.fade-in-up');
+const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            cardObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+
+fadeCards.forEach(card => {
+    card.style.animationPlayState = 'paused';
+    cardObserver.observe(card);
+});
