@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
     <!-- External CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
@@ -37,8 +37,13 @@
             </nav>
 
             <div class="nav-actions">
-                <button class="btn btn-login">Log in</button>
-                <button class="btn btn-outline btn-signin">Sign in</button>
+                {% if user_name %}
+                    <span style="font-weight: 500; font-size: 15px; color: var(--text-primary); margin-right: 12px;">Hi, {{ user_name }}</span>
+                    <a href="{{ url_for('logout') }}" class="btn btn-login" style="background-color: var(--accent-red); color: white; text-decoration: none;">Log out</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="btn btn-login" style="text-decoration:none;">Log in</a>
+                    <a href="{{ url_for('signup') }}" class="btn btn-outline btn-signin" style="text-decoration:none;">Sign up</a>
+                {% endif %}
                 <div class="divider"></div>
                 <button class="icon-toggle" aria-label="Toggle Dark Mode">
                     <span class="material-icons-round">dark_mode</span>
@@ -361,7 +366,7 @@
     </footer>
 
     <!-- External JS -->
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>

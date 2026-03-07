@@ -328,7 +328,6 @@ body {
 }
 
 .feat-link {
-    color: var(--primary-green);
     font-weight: 500;
 }
 
@@ -601,26 +600,41 @@ body {
 
 /* Steps unified grid: 5 cols = [circle][arc][circle][arc][circle] */
 .steps-timeline {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
+    justify-items: center;
     margin: 60px auto 40px;
-    max-width: 700px;
-    gap: 0;
+    max-width: 1000px;
+    position: relative;
 }
 
 .step-connector {
-    flex: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(33.33% - 70px);
     height: 50px;
     overflow: visible;
+    z-index: 0;
 }
+
+/* Position the SVGs accurately between circles */
+.step-connector:nth-of-type(1) {
+    left: calc(16.66% + 35px);
+}
+
+.step-connector:nth-of-type(2) {
+    left: calc(50% + 35px);
+}
+
 
 .steps-content-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     text-align: center;
-    max-width: 760px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -665,25 +679,7 @@ body {
     color: var(--primary-green);
 }
 
-.steps-content-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    text-align: center;
-}
 
-.step-content-item h3 {
-    font-size: 19px;
-    font-weight: 700;
-    margin-bottom: 14px;
-    color: var(--text-primary);
-}
-
-.step-content-item p {
-    color: var(--text-secondary);
-    font-size: 15px;
-    line-height: 1.8;
-}
 
 /* PRICING */
 .pricing {

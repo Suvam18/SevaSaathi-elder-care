@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SevaSaathi - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body style="background: #fdfdfd; display: flex; flex-direction: column; min-height: 100vh;">
+    
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-group">
+                <a href="{{ url_for('index') }}" class="logo">
+                    <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/leaf.svg" alt="Leaf logo" class="logo-icon-svg" />
+                    <span>SevaSaathi</span>
+                </a>
+            </div>
+            <div class="nav-actions">
+                <span style="font-weight: 500; color: var(--text-secondary); margin-right: 15px;">{{ email }}</span>
+                <a href="{{ url_for('logout') }}" class="btn btn-outline" style="text-decoration:none;">Log out</a>
+            </div>
+        </div>
+    </header>
+
+    <main style="flex: 1; padding: 120px 40px; margin: 0 auto; max-width: 1400px; width: 100%; text-align: center;">
+        <div class="feature-icon-outline" style="margin: 0 auto 30px; width: 100px; height: 100px; border-color: var(--primary-green); color: var(--primary-green); background: var(--secondary-green);">
+            <span class="material-icons-round" style="font-size: 50px;">check_circle</span>
+        </div>
+        <h1 style="font-size: 40px; color: var(--text-primary); margin-bottom: 20px;">Welcome to your Dashboard!</h1>
+        <p style="color: var(--text-secondary); font-size: 18px; max-width: 600px; margin: 0 auto;">
+            You have successfully logged in. This area will soon contain your personalized health metrics, daily medication schedules, and caregiver alerts.
+        </p>
+        <div style="margin-top: 40px;">
+            <a href="{{ url_for('index') }}" class="btn btn-primary" style="text-decoration:none; display:inline-block;">Return to Home</a>
+        </div>
+    </main>
+
+</body>
+</html>

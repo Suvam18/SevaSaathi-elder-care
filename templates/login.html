@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SevaSaathi - Log In</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+</head>
+<body class="auth-page">
+    <div class="auth-container fade-in-up">
+        <a href="{{ url_for('index') }}" class="back-link">
+            <span class="material-icons-round">arrow_back</span> Back to Home
+        </a>
+        
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/leaf.svg" alt="SevaSaathi Logo" class="auth-logo">
+                <h2>Welcome back</h2>
+                <p>Log in to access your health dashboard</p>
+            </div>
+            
+            <div class="auth-tabs">
+                <a href="{{ url_for('login') }}" class="auth-tab active">Log In</a>
+                <a href="{{ url_for('signup') }}" class="auth-tab">Sign Up</a>
+                <div class="tab-slider tab-left"></div>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <div class="flash-messages">
+                {% for category, message in messages %}
+                  <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+            
+            <form action="{{ url_for('login') }}" method="POST" class="auth-form">
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-wrapper">
+                        <span class="material-icons-round input-icon">mail</span>
+                        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <span class="material-icons-round input-icon">lock</span>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn auth-btn">Log In</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
