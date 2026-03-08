@@ -11,9 +11,11 @@ users_db = {}
 @app.route('/')
 def index():
     user_name = None
+    user_plan = 'basic'
     if 'user_email' in session and session['user_email'] in users_db:
         user_name = users_db[session['user_email']]['name']
-    return render_template('index.html', user_name=user_name)
+        user_plan = users_db[session['user_email']].get('plan', 'basic')
+    return render_template('index.html', user_name=user_name, user_plan=user_plan)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -43,7 +45,8 @@ def signup():
         else:
             users_db[email] = {
                 'password': generate_password_hash(password),
-                'name': name
+                'name': name,
+                'plan': 'basic'
             }
             flash('Account created successfully! Please log in.', 'success')
             return redirect(url_for('login'))
@@ -72,6 +75,20 @@ def profile():
 def logout():
     session.pop('user_email', None)
     return redirect(url_for('index'))
+
+@app.route('/upgrade', methods=['GET', 'POST'])
+def upgrade():
+    if 'user_email' not in session:
+        flash('Please log in to upgrade your plan.', 'error')
+        return redirect(url_for('login'))
+        
+    if request.method == 'POST':
+        # Process the upgrade
+        users_db[session['user_email']]['plan'] = 'premium'
+        flash('Successfully upgraded to Premium Plan!', 'success')
+        return redirect(url_for('dashboard'))
+        
+    return render_template('upgrade.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

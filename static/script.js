@@ -208,7 +208,14 @@ const featureDetailMeta = {
     'key-features': { icon: 'grid_view', title: 'Key Features' },
     'family':       { icon: 'volunteer_activism', title: 'Family Sharing' },
     'privacy':      { icon: 'verified_user', title: 'Data Privacy' },
-    'alerts':       { icon: 'notifications_active', title: 'Smart Alerts' }
+    'alerts':       { icon: 'notifications_active', title: 'Smart Alerts' },
+    // New Feature Cards
+    'health-logging': { icon: 'monitor_heart', title: 'Health Logging' },
+    'care-sharing': { icon: 'folder_shared', title: 'Care Sharing' },
+    'care-collaboration': { icon: 'handshake', title: 'Care Collaboration' },
+    'medication-reminders': { icon: 'medication', title: 'Medication Reminders' },
+    'emergency-sos': { icon: 'sos', title: 'Emergency SOS' },
+    'appointment-tracking': { icon: 'calendar_month', title: 'Appointment Tracking' }
 };
 
 function openFeatureDetail(id) {

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SevaSaathi - Upgrade to Premium</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+</head>
+<body class="auth-page">
+    <div class="auth-container fade-in-up">
+        <a href="{{ url_for('index') }}" class="back-link">
+            <span class="material-icons-round">arrow_back</span> Back to Home
+        </a>
+        
+        <div class="auth-card" style="max-width:450px;">
+            <div class="auth-header">
+                <span class="material-icons-round auth-logo-icon" style="font-size: 40px; color: var(--primary-green); margin-bottom: 12px;">diamond</span>
+                <h2 style="color:var(--primary-green)">Family Premium</h2>
+                <p>Complete peace of mind for the whole family</p>
+            </div>
+            
+            <div style="background:var(--secondary-green); padding:15px; border-radius:8px; margin-bottom:24px; text-align:center;">
+                <h3 style="color:var(--text-primary); margin:0; font-size:24px;">₹499 <span style="font-size:14px; font-weight:400; color:var(--text-secondary)">/month</span></h3>
+            </div>
+            
+            <ul style="list-style:none; padding:0; margin:0 0 24px 0; color:var(--text-secondary); font-size:14px; line-height:1.6;">
+                <li style="display:flex; align-items:center; margin-bottom:8px;"><span class="material-icons-round" style="color:var(--primary-green); font-size:18px; margin-right:8px;">check_circle</span> Everything in Basic</li>
+                <li style="display:flex; align-items:center; margin-bottom:8px;"><span class="material-icons-round" style="color:var(--primary-green); font-size:18px; margin-right:8px;">check_circle</span> Shared caregiver dashboard</li>
+                <li style="display:flex; align-items:center; margin-bottom:8px;"><span class="material-icons-round" style="color:var(--primary-green); font-size:18px; margin-right:8px;">check_circle</span> Unlimited SOS contacts & priority routing</li>
+                <li style="display:flex; align-items:center; margin-bottom:8px;"><span class="material-icons-round" style="color:var(--primary-green); font-size:18px; margin-right:8px;">check_circle</span> Automated doctor appointment sync</li>
+                <li style="display:flex; align-items:center;"><span class="material-icons-round" style="color:var(--primary-green); font-size:18px; margin-right:8px;">check_circle</span> PDF Health report exports</li>
+            </ul>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <div class="flash-messages">
+                {% for category, message in messages %}
+                  <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+            
+            <form action="{{ url_for('upgrade') }}" method="POST" class="auth-form">
+                <button type="submit" class="btn auth-btn">Pay ₹499 &amp; Upgrade</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
