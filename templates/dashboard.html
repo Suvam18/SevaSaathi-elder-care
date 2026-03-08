@@ -19,17 +19,33 @@
                 </a>
             </div>
             <div class="nav-actions">
-                <span style="font-weight: 500; color: var(--text-secondary); margin-right: 15px;">{{ email }}</span>
-                <a href="{{ url_for('logout') }}" class="btn btn-outline" style="text-decoration:none;">Log out</a>
-                <div class="divider"></div>
+                <span style="font-weight: 500; font-size: 15px; color: var(--text-primary); margin-right: 4px; display: flex; align-items: center; justify-content: center;">Hi, {{ user_name }}!</span>
                 <button class="icon-toggle" aria-label="Toggle Dark Mode">
                     <span class="material-icons-round">dark_mode</span>
                 </button>
-                <a href="{{ url_for('profile') }}" class="icon-toggle">
-                    <div class="profile-avatar">
+                <div class="profile-menu-container">
+                    <a href="#" class="icon-toggle profile-icon-btn" aria-label="Profile Menu">
                         <span class="material-icons-round">face</span>
+                    </a>
+                    <div class="profile-dropdown">
+                        <div class="profile-dropdown-header">
+                            <span class="pd-name">{{ user_name }}</span>
+                            <span class="pd-email">{{ email }}</span>
+                        </div>
+                        <a href="{{ url_for('dashboard') }}">
+                            <span class="material-icons-round">grid_view</span>
+                            Dashboard
+                        </a>
+                        <a href="{{ url_for('profile') }}">
+                            <span class="material-icons-round">manage_accounts</span>
+                            My Profile Settings
+                        </a>
+                        <a href="{{ url_for('logout') }}" class="logout-btn">
+                            <span class="material-icons-round">logout</span>
+                            Logout
+                        </a>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
     </header>

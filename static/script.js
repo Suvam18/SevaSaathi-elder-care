@@ -288,3 +288,21 @@ function saveFdmData(featureId) {
     }, 2000);
 }
 
+// Profile Dropdown Toggle
+const profileIconBtn = document.querySelector('.profile-icon-btn');
+const profileDropdown = document.querySelector('.profile-dropdown');
+
+if (profileIconBtn && profileDropdown) {
+    profileIconBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        profileDropdown.classList.toggle('open');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!profileIconBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+            profileDropdown.classList.remove('open');
+        }
+    });
+}
+
