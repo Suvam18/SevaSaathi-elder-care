@@ -151,52 +151,58 @@
             </div>
 
             <div class="features-grid">
-                <div class="feature-card fade-in-up">
+                <div class="feature-card fade-in-up feature-card-clickable" data-feature-tab="medication">
                     <div class="feature-icon-outline">
                         <span class="material-icons-round">medication</span>
                     </div>
-                    <h3>Medication & Health</h3>
+                    <h3>Medication &amp; Health</h3>
                     <p>SevaSaathi is an <span class="feat-link">intelligent health companion</span> that helps seniors track and manage their daily medications, vitals, and health logs from one simple interface, with <span class="feat-link">smart reminders</span> so no dose is ever missed.</p>
+                    <span class="feat-explore-hint"><span class="material-icons-round">open_in_new</span> Explore</span>
                 </div>
 
-                <div class="feature-card fade-in-up" style="animation-delay: 0.2s;">
+                <div class="feature-card fade-in-up feature-card-clickable" data-feature-tab="roadmap" style="animation-delay: 0.2s;">
                     <div class="feature-icon-outline">
                         <span class="material-icons-round">trending_up</span>
                     </div>
                     <h3>Future Roadmap</h3>
                     <p>The platform will evolve with <span class="feat-link">AI-powered health insights</span>, integration with wearable devices for real-time monitoring, <span class="feat-link">automated prescription renewals</span> and doctor appointment sync for complete hands-free care.</p>
+                    <span class="feat-explore-hint"><span class="material-icons-round">open_in_new</span> Explore</span>
                 </div>
 
-                <div class="feature-card fade-in-up" style="animation-delay: 0.4s;">
+                <div class="feature-card fade-in-up feature-card-clickable" data-feature-tab="key-features" style="animation-delay: 0.4s;">
                     <div class="feature-icon-outline">
                         <span class="material-icons-round">grid_view</span>
                     </div>
                     <h3>Key Features</h3>
                     <p>The app lets family members link a <span class="feat-link">Caregiver Dashboard</span> to monitor their loved one's health journey. Users can also trigger a 1-tap SOS button that <span class="feat-link">instantly alerts contacts</span> with GPS location during emergencies — a true lifeline.</p>
+                    <span class="feat-explore-hint"><span class="material-icons-round">open_in_new</span> Explore</span>
                 </div>
 
-                <div class="feature-card fade-in-up" style="animation-delay: 0.5s;">
+                <div class="feature-card fade-in-up feature-card-clickable" data-feature-tab="family" style="animation-delay: 0.5s;">
                     <div class="feature-icon-outline">
                         <span class="material-icons-round">volunteer_activism</span>
                     </div>
                     <h3>Family Sharing</h3>
                     <p>Easily <span class="feat-link">share health updates</span> and vital logs securely with trusted family members and doctors, ensuring everyone is kept in the loop.</p>
+                    <span class="feat-explore-hint"><span class="material-icons-round">open_in_new</span> Explore</span>
                 </div>
 
-                <div class="feature-card fade-in-up" style="animation-delay: 0.6s;">
+                <div class="feature-card fade-in-up feature-card-clickable" data-feature-tab="privacy" style="animation-delay: 0.6s;">
                     <div class="feature-icon-outline">
                         <span class="material-icons-round">verified_user</span>
                     </div>
                     <h3>Data Privacy</h3>
                     <p>Your health data is <span class="feat-link">fully encrypted</span> and securely stored. You have complete control over who can view and access your medical history.</p>
+                    <span class="feat-explore-hint"><span class="material-icons-round">open_in_new</span> Explore</span>
                 </div>
 
-                <div class="feature-card fade-in-up" style="animation-delay: 0.7s;">
+                <div class="feature-card fade-in-up feature-card-clickable" data-feature-tab="alerts" style="animation-delay: 0.7s;">
                     <div class="feature-icon-outline">
                         <span class="material-icons-round">notifications_active</span>
                     </div>
                     <h3>Smart Alerts</h3>
                     <p>Receive proactive <span class="feat-link">push notifications</span> for upcoming appointments, refill reminders, and missed medication doses directly on your device.</p>
+                    <span class="feat-explore-hint"><span class="material-icons-round">open_in_new</span> Explore</span>
                 </div>
             </div>
         </div>
@@ -583,7 +589,7 @@
     <div class="feature-modal" id="featureModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>SevaSaathi Services</h2>
+                <h2 id="featureModalTitle">SevaSaathi Services</h2>
                 <button class="close-modal-btn" id="closeModalBtn">
                     <span class="material-icons-round">close</span>
                 </button>
@@ -710,6 +716,386 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURE DETAIL MODAL (single tab, no shared tabs) -->
+    <div class="feature-modal-overlay" id="featureDetailOverlay"></div>
+    <div class="feature-modal" id="featureDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="fdm-title-group">
+                    <span class="material-icons-round fdm-icon" id="fdmIcon">medication</span>
+                    <h2 id="fdmTitle">Medication &amp; Health</h2>
+                </div>
+                <button class="close-modal-btn" id="closeDetailModalBtn">
+                    <span class="material-icons-round">close</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Medication & Health -->
+                <div class="fdm-pane" id="fdm-medication">
+                    <div class="fdm-view info-view" id="info-medication">
+                        <div class="modal-feature-grid">
+                            <div class="mfg-text">
+                                <h3>Smart Medication Tracking</h3>
+                                <p>Manage your daily health routine with high-contrast, easy-to-read logs. Track every dose and vital with precision.</p>
+                                <ul class="f-check-list">
+                                    <li><span class="material-icons-round">check_circle</span> Customizable Dosage Schedules</li>
+                                    <li><span class="material-icons-round">check_circle</span> Automated Refill Reminders</li>
+                                    <li><span class="material-icons-round">check_circle</span> Vital Signs Synchronization</li>
+                                </ul>
+                                <div class="fdm-actions">
+                                    <button class="btn btn-primary" onclick="toggleFdmView('medication', 'form')">Take Next Dose</button>
+                                    <button class="btn btn-outline" onclick="toggleFdmView('medication', 'form')">Vital History</button>
+                                </div>
+                            </div>
+                            <div class="mfg-visual">
+                                <div class="f-mock-card">
+                                    <div class="f-mock-header"><span>Daily Meds</span><span class="material-icons-round">more_vert</span></div>
+                                    <div class="f-mock-item active">
+                                        <div class="f-mock-icon med"><span class="material-icons-round">medication</span></div>
+                                        <div class="f-mock-info"><h4>Atorvastatin</h4><p>10mg &bull; 8:00 AM</p></div>
+                                        <button class="f-mock-btn">Take</button>
+                                    </div>
+                                    <div class="f-mock-item">
+                                        <div class="f-mock-icon" style="background:#e8f0fe;color:#1967d2;"><span class="material-icons-round">medication</span></div>
+                                        <div class="f-mock-info"><h4>Metformin</h4><p>500mg &bull; 1:00 PM</p></div>
+                                        <button class="f-mock-btn outline">Log</button>
+                                    </div>
+                                    <div class="f-mock-footer"><p>Next dose in <span style="color:var(--primary-green);font-weight:600">2 hours</span></p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fdm-view form-view hidden" id="form-medication">
+                        <h3>Log Medication</h3>
+                        <div class="fdm-form-container">
+                            <div class="fdm-input-group">
+                                <label>Medicine Name</label>
+                                <input type="text" placeholder="e.g. Paracetamol">
+                            </div>
+                            <div class="fdm-form-row">
+                                <div class="fdm-input-group">
+                                    <label>Dosage</label>
+                                    <input type="text" placeholder="e.g. 500mg">
+                                </div>
+                                <div class="fdm-input-group">
+                                    <label>Time</label>
+                                    <input type="time">
+                                </div>
+                            </div>
+                            <div class="fdm-form-actions">
+                                <button class="btn btn-outline" onclick="toggleFdmView('medication', 'info')">Back</button>
+                                <button class="btn btn-primary" onclick="saveFdmData('medication')">Save Dose</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Future Roadmap -->
+                <div class="fdm-pane" id="fdm-roadmap">
+                    <div class="fdm-view info-view" id="info-roadmap">
+                        <div class="modal-feature-grid">
+                            <div class="mfg-text">
+                                <h3>Building the Future of Care</h3>
+                                <p>Our roadmap brings hands-free, intelligent health monitoring to every senior home.</p>
+                                <div class="roadmap-timeline">
+                                    <div class="roadmap-item">
+                                        <div class="rm-dot active"></div>
+                                        <div class="rm-content"><h4>Q4 2023: AI Health Insights</h4><p>Detecting patterns in vitals to alert doctors proactively.</p></div>
+                                    </div>
+                                    <div class="roadmap-item">
+                                        <div class="rm-dot"></div>
+                                        <div class="rm-content"><h4>Q1 2024: Wearable Integration</h4><p>Syncing with Apple Watch and Fitbit for real-time monitoring.</p></div>
+                                    </div>
+                                    <div class="roadmap-item">
+                                        <div class="rm-dot"></div>
+                                        <div class="rm-content"><h4>Q2 2024: Automated Pharmacy</h4><p>1-tap prescription refills delivered to your doorstep.</p></div>
+                                    </div>
+                                </div>
+                                <div class="fdm-actions">
+                                    <button class="btn btn-primary" onclick="toggleFdmView('roadmap', 'form')">Suggest a Feature</button>
+                                </div>
+                            </div>
+                            <div class="mfg-visual">
+                                <div class="roadmap-visual-box">
+                                    <div class="rm-chart-bar" style="height:40%"></div>
+                                    <div class="rm-chart-bar" style="height:60%"></div>
+                                    <div class="rm-chart-bar active" style="height:85%"></div>
+                                    <div class="rm-chart-bar" style="height:45%"></div>
+                                    <div class="rm-chart-label">Growth &amp; Innovation</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fdm-view form-view hidden" id="form-roadmap">
+                        <h3>Feature Suggestion</h3>
+                        <div class="fdm-form-container">
+                            <div class="fdm-input-group">
+                                <label>What feature would help you most?</label>
+                                <textarea rows="4" placeholder="Describe your idea here..."></textarea>
+                            </div>
+                            <div class="fdm-form-actions">
+                                <button class="btn btn-outline" onclick="toggleFdmView('roadmap', 'info')">Back</button>
+                                <button class="btn btn-primary" onclick="saveFdmData('roadmap')">Send Feedback</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Features -->
+                <div class="fdm-pane" id="fdm-key-features">
+                    <div class="fdm-view info-view" id="info-key-features">
+                        <div class="modal-feature-grid">
+                            <div class="mfg-text">
+                                <h3>The Caregiver Dashboard</h3>
+                                <p>Peace of mind for the whole family. Monitor health status from anywhere in the world.</p>
+                                <div class="dashboard-stats">
+                                    <div class="d-stat"><div class="d-val">100%</div><div class="d-lbl">Adherence</div></div>
+                                    <div class="d-stat"><div class="d-val">Normal</div><div class="d-lbl">Vitals Status</div></div>
+                                </div>
+                                <p style="margin-top:16px;">Link your account with family members for instant safety alerts and shared health reports.</p>
+                                <div class="fdm-actions">
+                                    <button class="btn btn-primary" onclick="toggleFdmView('key-features', 'form')">Update Vitals</button>
+                                </div>
+                            </div>
+                            <div class="mfg-visual">
+                                <div class="f-mock-dashboard">
+                                    <div class="d-header">
+                                        <span class="material-icons-round">face</span>
+                                        <span>Sharma Ji's Status</span>
+                                        <span class="status-dot online"></span>
+                                    </div>
+                                    <div class="d-body">
+                                        <div class="d-metric">
+                                            <span class="material-icons-round">favorite</span>
+                                            <div class="d-metric-info"><p>Heart Rate</p><h4>72 BPM</h4></div>
+                                        </div>
+                                        <div class="d-metric">
+                                            <span class="material-icons-round">water_drop</span>
+                                            <div class="d-metric-info"><p>Blood Sugar</p><h4>110 mg/dL</h4></div>
+                                        </div>
+                                    </div>
+                                    <div class="d-footer"><span class="material-icons-round">shield</span><span>Secured via SevaSaathi Protect</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fdm-view form-view hidden" id="form-key-features">
+                        <h3>Update Current Vitals</h3>
+                        <div class="fdm-form-container">
+                            <div class="fdm-form-row">
+                                <div class="fdm-input-group">
+                                    <label>Heart Rate (BPM)</label>
+                                    <input type="number" placeholder="72">
+                                </div>
+                                <div class="fdm-input-group">
+                                    <label>Blood Sugar (mg/dL)</label>
+                                    <input type="number" placeholder="110">
+                                </div>
+                            </div>
+                            <div class="fdm-form-actions">
+                                <button class="btn btn-outline" onclick="toggleFdmView('key-features', 'info')">Back</button>
+                                <button class="btn btn-primary" onclick="saveFdmData('key-features')">Update Status</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family Sharing -->
+                <div class="fdm-pane" id="fdm-family">
+                    <div class="fdm-view info-view" id="info-family">
+                        <div class="modal-feature-grid">
+                            <div class="mfg-text">
+                                <h3>Connected Family Care</h3>
+                                <p>Bridge the distance with real-time updates. Keep siblings, children, and doctors in the loop effortlessly.</p>
+                                <ul class="f-check-list">
+                                    <li><span class="material-icons-round">check_circle</span> Shared Health Timeline</li>
+                                    <li><span class="material-icons-round">check_circle</span> Instant Safety Notifications</li>
+                                    <li><span class="material-icons-round">check_circle</span> Direct Doctor Reports</li>
+                                </ul>
+                                <div class="fdm-actions">
+                                    <button class="btn btn-primary" onclick="toggleFdmView('family', 'form')">Add Family Member</button>
+                                    <button class="btn btn-outline" onclick="toggleFdmView('family', 'form')">Share Report</button>
+                                </div>
+                            </div>
+                            <div class="mfg-visual">
+                                <div class="f-mock-dashboard" style="background:var(--bg-white)">
+                                    <div class="d-header" style="background:var(--secondary-green); color:var(--text-primary)">
+                                        <span class="material-icons-round">groups</span>
+                                        <span>Family Network</span>
+                                    </div>
+                                    <div class="d-body">
+                                        <div class="contact-card" style="margin-bottom:10px">
+                                            <span class="material-icons-round" style="padding:8px">person</span>
+                                            <div class="contact-info">
+                                                <span class="contact-name">Rahul (Son)</span>
+                                                <span class="contact-phone">Active now</span>
+                                            </div>
+                                        </div>
+                                        <div class="contact-card">
+                                            <span class="material-icons-round" style="padding:8px">person</span>
+                                            <div class="contact-info">
+                                                <span class="contact-name">Dr. Mehta</span>
+                                                <span class="contact-phone">Last seen 2h ago</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fdm-view form-view hidden" id="form-family">
+                        <h3>Invite Trusted Members</h3>
+                        <div class="fdm-form-container">
+                            <div class="fdm-input-group">
+                                <label>Member Name</label>
+                                <input type="text" placeholder="e.g. Rahul Sharma">
+                            </div>
+                            <div class="fdm-form-row">
+                                <div class="fdm-input-group">
+                                    <label>Relationship</label>
+                                    <select>
+                                        <option>Son/Daughter</option>
+                                        <option>Spouse</option>
+                                        <option>Sibling</option>
+                                        <option>Doctor</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="fdm-input-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" placeholder="+91 XXXX-XXXXXX">
+                                </div>
+                            </div>
+                            <div class="fdm-form-actions">
+                                <button class="btn btn-outline" onclick="toggleFdmView('family', 'info')">Back</button>
+                                <button class="btn btn-primary" onclick="saveFdmData('family')">Send Invite</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Privacy -->
+                <div class="fdm-pane" id="fdm-privacy">
+                    <div class="fdm-view info-view" id="info-privacy">
+                        <div class="modal-feature-grid">
+                            <div class="mfg-text">
+                                <h3>Your Data, Your Control</h3>
+                                <p>We use military-grade encryption to ensure your medical history remains private and secure.</p>
+                                <ul class="f-check-list">
+                                    <li><span class="material-icons-round">lock</span> End-to-End Encryption</li>
+                                    <li><span class="material-icons-round">gpp_good</span> HIPAA Compliant Storage</li>
+                                    <li><span class="material-icons-round">visibility_off</span> Granular Access Controls</li>
+                                </ul>
+                                <div class="fdm-actions">
+                                    <button class="btn btn-primary" onclick="toggleFdmView('privacy', 'form')">Privacy Settings</button>
+                                </div>
+                            </div>
+                            <div class="mfg-visual">
+                                <div class="f-mock-card" style="text-align:center; padding:40px">
+                                    <span class="material-icons-round" style="font-size:64px; color:var(--primary-green); margin-bottom:20px">verified_user</span>
+                                    <h4>Security Shield Active</h4>
+                                    <p style="font-size:12px; margin-top:10px">All health records are encrypted with 256-bit AES protection.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fdm-view form-view hidden" id="form-privacy">
+                        <h3>Access Permissions</h3>
+                        <div class="fdm-form-container">
+                            <div class="fdm-input-group">
+                                <label>Who can view your vitals?</label>
+                                <select>
+                                    <option>Immediate Family Only</option>
+                                    <option>Family & Doctors</option>
+                                    <option>Only Me</option>
+                                    <option>Public (Emergency Mode)</option>
+                                </select>
+                            </div>
+                            <div class="fdm-input-group">
+                                <label>Two-Factor Authentication</label>
+                                <div style="display:flex;align-items:center;gap:10px;margin-top:5px;">
+                                    <input type="checkbox" checked style="width:20px;height:20px;">
+                                    <span>Enabled for Login</span>
+                                </div>
+                            </div>
+                            <div class="fdm-form-actions">
+                                <button class="btn btn-outline" onclick="toggleFdmView('privacy', 'info')">Back</button>
+                                <button class="btn btn-primary" onclick="saveFdmData('privacy')">Update Privacy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smart Alerts -->
+                <div class="fdm-pane" id="fdm-alerts">
+                    <div class="fdm-view info-view" id="info-alerts">
+                        <div class="modal-feature-grid">
+                            <div class="mfg-text">
+                                <h3>Never Miss a Beat</h3>
+                                <p>Intelligent reminders that adapt to your schedule. Stay on track with medications and appointments.</p>
+                                <ul class="f-check-list">
+                                    <li><span class="material-icons-round">notifications_active</span> Adaptive Med Reminders</li>
+                                    <li><span class="material-icons-round">event</span> Appointment Sync</li>
+                                    <li><span class="material-icons-round">battery_alert</span> Device Low Battery Alerts</li>
+                                </ul>
+                                <div class="fdm-actions">
+                                    <button class="btn btn-primary" onclick="toggleFdmView('alerts', 'form')">Configure Alerts</button>
+                                </div>
+                            </div>
+                            <div class="mfg-visual">
+                                <div class="notifications-list">
+                                    <div class="notification-item unread">
+                                        <div class="noti-icon medicine"><span class="material-icons-round">medication</span></div>
+                                        <div class="noti-content">
+                                            <h4>Morning Dose</h4>
+                                            <p>Time for Atorvastatin (10mg).</p>
+                                        </div>
+                                    </div>
+                                    <div class="notification-item">
+                                        <div class="noti-icon appointment"><span class="material-icons-round">calendar_today</span></div>
+                                        <div class="noti-content">
+                                            <h4>Eye Checkup</h4>
+                                            <p>In 30 minutes at Vision Care.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fdm-view form-view hidden" id="form-alerts">
+                        <h3>Set New Smart Alert</h3>
+                        <div class="fdm-form-container">
+                            <div class="fdm-input-group">
+                                <label>Alert Type</label>
+                                <select>
+                                    <option>Medication Reminder</option>
+                                    <option>Doctor Appointment</option>
+                                    <option>Vital Check Reminder</option>
+                                    <option>Water Intake</option>
+                                </select>
+                            </div>
+                            <div class="fdm-form-row">
+                                <div class="fdm-input-group">
+                                    <label>Reminder Time</label>
+                                    <input type="time">
+                                </div>
+                                <div class="fdm-input-group">
+                                    <label>Repeat Every Day?</label>
+                                    <select><option>Yes</option><option>No</option></select>
+                                </div>
+                            </div>
+                            <div class="fdm-form-actions">
+                                <button class="btn btn-outline" onclick="toggleFdmView('alerts', 'info')">Back</button>
+                                <button class="btn btn-primary" onclick="saveFdmData('alerts')">Enable Alert</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

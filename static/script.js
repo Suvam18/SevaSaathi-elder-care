@@ -195,3 +195,89 @@ const statObserver = new IntersectionObserver((entries) => {
 
 statNumbers.forEach(num => statObserver.observe(num));
 
+// Feature card click → open dedicated detail modal (single feature, no tabs)
+const featureDetailOverlay = document.getElementById('featureDetailOverlay');
+const featureDetailModal = document.getElementById('featureDetailModal');
+const closeDetailModalBtn = document.getElementById('closeDetailModalBtn');
+const fdmIcon = document.getElementById('fdmIcon');
+const fdmTitle = document.getElementById('fdmTitle');
+
+const featureDetailMeta = {
+    'medication':   { icon: 'medication', title: 'Medication & Health' },
+    'roadmap':      { icon: 'trending_up', title: 'Future Roadmap' },
+    'key-features': { icon: 'grid_view', title: 'Key Features' },
+    'family':       { icon: 'volunteer_activism', title: 'Family Sharing' },
+    'privacy':      { icon: 'verified_user', title: 'Data Privacy' },
+    'alerts':       { icon: 'notifications_active', title: 'Smart Alerts' }
+};
+
+function openFeatureDetail(id) {
+    // Hide all panes
+    document.querySelectorAll('.fdm-pane').forEach(p => p.style.display = 'none');
+    
+    // Reset all panes to info view
+    document.querySelectorAll('.fdm-view.info-view').forEach(v => v.classList.remove('hidden'));
+    document.querySelectorAll('.fdm-view.form-view').forEach(v => v.classList.add('hidden'));
+
+    // Show target pane
+    const target = document.getElementById('fdm-' + id);
+    if (target) target.style.display = 'block';
+    
+    // Update header
+    const meta = featureDetailMeta[id] || {};
+    if (fdmIcon) fdmIcon.textContent = meta.icon || 'info';
+    if (fdmTitle) fdmTitle.textContent = meta.title || '';
+    
+    // Open modal
+    featureDetailOverlay.classList.add('open');
+    featureDetailModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFeatureDetail() {
+    featureDetailOverlay.classList.remove('open');
+    featureDetailModal.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.feature-card-clickable').forEach(card => {
+    card.addEventListener('click', () => {
+        const tabId = card.getAttribute('data-feature-tab');
+        openFeatureDetail(tabId);
+    });
+});
+
+if (closeDetailModalBtn) closeDetailModalBtn.addEventListener('click', closeFeatureDetail);
+if (featureDetailOverlay) featureDetailOverlay.addEventListener('click', closeFeatureDetail);
+
+function toggleFdmView(featureId, viewType) {
+    const infoView = document.getElementById('info-' + featureId);
+    const formView = document.getElementById('form-' + featureId);
+    
+    if (viewType === 'form') {
+        infoView.classList.add('hidden');
+        formView.classList.remove('hidden');
+    } else {
+        infoView.classList.remove('hidden');
+        formView.classList.add('hidden');
+    }
+}
+
+function saveFdmData(featureId) {
+    const formView = document.getElementById('form-' + featureId);
+    const formContainer = formView.querySelector('.fdm-form-container');
+    
+    // Create success message
+    const success = document.createElement('div');
+    success.className = 'success-message';
+    success.innerHTML = `<span class="material-icons-round">check_circle</span> Data saved successfully to ${featureDetailMeta[featureId].title}!`;
+    
+    // Append and then remove after delay
+    formContainer.appendChild(success);
+    
+    setTimeout(() => {
+        success.remove();
+        toggleFdmView(featureId, 'info');
+    }, 2000);
+}
+
